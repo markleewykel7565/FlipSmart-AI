@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FlipSmart AI</title><style>
+body{margin:0;background:#f3f4f6;color:#111827;font-family:Arial}.wrap{max-width:760px;margin:auto;padding:18px}
+header{background:#111827;color:white;padding:24px;border-radius:18px}h1{margin:0}.card{background:white;padding:20px;border-radius:16px;margin-top:18px;box-shadow:0 2px 12px #0001}
+label{display:block;font-weight:bold;margin-top:12px}input,textarea,select{width:100%;padding:12px;margin-top:6px;border:1px solid #d1d5db;border-radius:9px;box-sizing:border-box;font-size:16px}
+button{background:#16a34a;color:white;border:0;border-radius:9px;padding:13px 16px;margin-top:15px;font-weight:bold}#output{white-space:pre-wrap;line-height:1.5;margin-top:15px}.muted{color:#6b7280}
+</style></head><body><div class="wrap"><header><h1>FlipSmart AI</h1><p>Analyze items before you buy them.</p></header>
+<div class="card"><h2>AI Item Analyzer</h2><p class="muted">Upload a photo or describe an item. Estimates are not verified sold prices.</p>
+<label>Item description</label><textarea id="description" rows="4" placeholder="Brand, model, condition, accessories, flaws..."></textarea>
+<label>Item photo</label><input id="photo" type="file" accept="image/*">
+<label>Purchase price ($)</label><input id="price" type="number" value="100">
+<label>Marketplace</label><select id="market"><option>eBay</option><option>Facebook Marketplace</option><option>Mercari</option><option>Poshmark</option></select>
+<button onclick="analyze()">Analyze with AI</button><div id="output"></div></div>
+<div class="card"><h2>Premium</h2><p>Unlock more analyses and advanced resale tools with a monthly subscription.</p><button onclick="subscribe()">Start premium subscription</button><div id="paymsg" class="muted"></div></div>
+</div><script>
+async function analyze(){let o=document.getElementById('output');o.textContent='Analyzing...';let f=new FormData();f.append('description',description.value);f.append('purchasePrice',price.value);f.append('marketplace',market.value);if(photo.files[0])f.append('photo',photo.files[0]);try{let r=await fetch('/api/analyze',{method:'POST',body:f}),d=await r.json();if(!r.ok)throw Error(d.error);o.textContent=JSON.stringify(d,null,2)}catch(e){o.textContent='Error: '+e.message}}
+async function subscribe(){let m=document.getElementById('paymsg');m.textContent='Preparing checkout...';try{let r=await fetch('/api/create-checkout',{method:'POST'}),d=await r.json();if(!r.ok)throw Error(d.error);location.href=d.url}catch(e){m.textContent=e.message}}
+</script></body></html>
