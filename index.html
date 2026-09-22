@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FlipSmart AI — Find Profitable Flips Faster</title>
+  <meta name="description" content="Use AI to estimate resale prices, profit, listing copy and resale risk from a product photo or name." />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header class="nav">
+    <a class="logo" href="/">FlipSmart<span>AI</span></a>
+    <a class="nav-link" href="#pricing">Pricing</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow">AI RESALE ASSISTANT</div>
+      <h1>Know the flip<br><span>before you buy.</span></h1>
+      <p class="hero-copy">Upload a product photo or enter an item. FlipSmart AI estimates resale value, fees, profit, demand and creates a ready-to-use listing.</p>
+      <a class="cta" href="#analyzer">Analyze an item →</a>
+    </section>
+
+    <section id="analyzer" class="card analyzer">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">01 · ANALYZE</div>
+          <h2>Is this item worth flipping?</h2>
+        </div>
+        <div id="remaining" class="remaining">Loading limit…</div>
+      </div>
+
+      <form id="analyzeForm">
+        <div class="grid">
+          <label>
+            Product name
+            <input id="productName" placeholder="e.g. Sony WH-1000XM5" />
+          </label>
+          <label>
+            Your purchase price
+            <input id="purchasePrice" type="number" min="0" step="0.01" placeholder="25.00" />
+          </label>
+          <label>
+            Marketplace
+            <select id="marketplace">
+              <option>eBay</option>
+              <option>Facebook Marketplace</option>
+              <option>Mercari</option>
+              <option>Poshmark</option>
+              <option>Other</option>
+            </select>
+          </label>
+        </div>
+
+        <label class="upload">
+          <input id="photo" type="file" accept="image/*" />
+          <span id="uploadText">📷 Upload product photo (optional)</span>
+        </label>
+
+        <button class="primary" type="submit" id="analyzeBtn">Analyze with AI</button>
+        <p class="fine">AI estimates are informational only. Verify actual sold listings before purchasing inventory.</p>
+      </form>
+    </section>
+
+    <section id="loading" class="loading hidden">
+      <div class="spinner"></div>
+      <p>Analyzing the item and building your resale report…</p>
+    </section>
+
+    <section id="results" class="results hidden">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">02 · RESULT</div>
+          <h2 id="identifiedItem">Resale report</h2>
+        </div>
+        <div id="buyDecision" class="decision"></div>
+      </div>
+
+      <div class="metrics">
+        <div class="metric"><small>Estimated resale</small><strong id="resaleRange">—</strong></div>
+        <div class="metric"><small>Recommended list</small><strong id="listPrice">—</strong></div>
+        <div class="metric"><small>Estimated profit</small><strong id="profit">—</strong></div>
+        <div class="metric"><small>Margin</small><strong id="margin">—</strong></div>
+      </div>
+
+      <div class="two-col">
+        <div class="card inner">
+          <h3>Demand & risk</h3>
+          <p id="condition"></p>
+          <p><b>Demand:</b> <span id="demand"></span></p>
+          <p><b>Risk:</b> <span id="risk"></span></p>
+          <h3>Tips</h3>
+          <ul id="tips"></ul>
+        </div>
+        <div class="card inner">
+          <h3>Ready-to-use listing</h3>
+          <label>Title</label>
+          <div class="copybox" id="listingTitle"></div>
+          <label>Description</label>
+          <div class="copybox tall" id="description"></div>
+          <button class="secondary" id="copyListing">Copy listing</button>
+          <h3>Keywords</h3>
+          <div id="keywords" class="tags"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing" class="pricing">
+      <div class="eyebrow">03 · UPGRADE</div>
+      <h2>Keep more flips moving.</h2>
+      <p>Start free, then upgrade when you need more daily analyses.</p>
+      <div class="price-card">
+        <h3>FlipSmart Pro</h3>
+        <div class="price">$9.99<span>/month</span></div>
+        <ul>
+          <li>More AI resale analyses</li>
+          <li>Photo-based item analysis</li>
+          <li>Listing titles & descriptions</li>
+          <li>Profit and fee estimates</li>
+          <li>Cancel anytime</li>
+        </ul>
+        <button class="primary" id="upgradeBtn">Start Pro</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2026 FlipSmart AI · Built for smarter resellers</footer>
+  <script src="/app.js"></script>
+</body>
+</html>
