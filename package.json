@@ -1,8 +1,0 @@
-{
-  "name":"flipsmart-ai-v2",
-  "version":"1.0.0",
-  "private":true,
-  "type":"module",
-  "scripts":{"start":"node server.js"},
-  "dependencies":{"express":"^4.21.2","dotenv":"^16.4.7","openai":"^4.77.3","multer":"^1.4.5-lts.1,"stripe":"^17.5.0"}
-}
