@@ -19,7 +19,7 @@ const FREE_ANALYSES_PER_DAY = Number(process.env.FREE_ANALYSES_PER_DAY || 3);
 const APP_URL = process.env.APP_URL || "http://localhost:3000";
 
 app.use(express.json({ limit: "8mb" }));
-app.use(express.static("public"));
+app.use(express.static("."));
 
 const usage = new Map();
 
